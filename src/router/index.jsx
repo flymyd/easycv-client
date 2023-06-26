@@ -3,7 +3,8 @@ import Framework from "@/components/Framework";
 import Index from "@/views/index.jsx";
 import About from "@/views/about.jsx";
 import Settings from "@/views/settings.jsx";
-import {CustomerServiceFilled, HomeFilled, SettingFilled} from "@ant-design/icons";
+import {CustomerServiceFilled, FolderOpenFilled, HomeFilled, SettingFilled} from "@ant-design/icons";
+import Explorer from "@/views/explorer.jsx";
 
 export const childRouter = [
   {
@@ -11,6 +12,12 @@ export const childRouter = [
     element: <Index/>,
     icon: <HomeFilled/>,
     label: "首页",
+  },
+  {
+    path: "explorer",
+    element: <Explorer/>,
+    icon: <FolderOpenFilled />,
+    label: "图库管理器",
   },
   {
     path: "settings",
