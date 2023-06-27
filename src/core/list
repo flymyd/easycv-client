@@ -1,0 +1,12 @@
+  function processEntries(entries) {
+    for (const entry of entries) {
+      console.log(`Entry: ${entry.path}`);
+      if (entry.children) {
+        processEntries(entry.children)
+      }
+    }
+  }
+  const listEntry = async () => {
+    const entries = await readDir('profile', {dir: BaseDirectory.AppData, recursive: true});
+    await processEntries(entries)
+  }

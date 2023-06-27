@@ -11,25 +11,25 @@ export const childRouter = [
     path: "index",
     element: <Index/>,
     icon: <HomeFilled/>,
-    label: "首页",
+    text: "首页",
   },
   {
     path: "explorer",
     element: <Explorer/>,
-    icon: <FolderOpenFilled />,
-    label: "图库管理器",
+    icon: <FolderOpenFilled/>,
+    text: "配置管理器",
   },
   {
     path: "settings",
     element: <Settings/>,
     icon: <SettingFilled/>,
-    label: '设置',
+    text: '设置',
   },
   {
     path: "about",
     element: <About/>,
     icon: <CustomerServiceFilled/>,
-    label: '关于',
+    text: '关于',
   },
 ]
 export const router = [

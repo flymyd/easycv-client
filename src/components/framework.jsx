@@ -1,29 +1,26 @@
-import {Layout, Menu, theme} from 'antd';
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {childRouter} from "@/router/index.jsx";
+import {Layout, Nav} from "@douyinfe/semi-ui";
 
 const {Sider, Content} = Layout;
 const Framework = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const {
-    token: {colorBgContainer},
-  } = theme.useToken();
   const onClickNav = (e) => {
-    navigate(e.key, {replace: true})
+    navigate(e.itemKey, {replace: true})
   }
-  const menuItems = childRouter.map(v => ({...v, key: '/' + v.path}))
+  const menuItems = childRouter.map(v => ({...v, itemKey: '/' + v.path}))
   const contentStyle = {
-    marginLeft: '12px',
+    background: 'F5F5F5',
     padding: 24,
     minHeight: 280,
-    background: colorBgContainer,
   }
   return (
     <Layout>
-      <Sider style={{minHeight: '100vh'}} trigger={null} collapsible collapsed={true}>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]} onClick={onClickNav}
-              items={menuItems}/>
+      <Sider trigger={null} collapsible collapsed={true}>
+        <Nav style={{minHeight: '100vh'}} theme="dark" mode="vertical" defaultIsCollapsed defaultSelectedKeys={[location.pathname]}
+             onClick={onClickNav}
+             items={menuItems}/>
       </Sider>
       <Layout>
         <Content style={contentStyle}>

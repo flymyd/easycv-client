@@ -1,9 +1,9 @@
 import {BaseDirectory, createDir, exists} from "@tauri-apps/api/fs";
 
 async function initApp() {
-  const imgFolder = await exists('img', {dir: BaseDirectory.AppData});
+  const imgFolder = await exists('profile', {dir: BaseDirectory.AppData});
   if (!imgFolder) {
-    await createDir('img', {dir: BaseDirectory.AppData, recursive: true});
+    await createDir('profile', {dir: BaseDirectory.AppData, recursive: true});
   }
 }
 

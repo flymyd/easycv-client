@@ -31,6 +31,9 @@
         "scope": [
           "$APPDATA/*"
         ]
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {
