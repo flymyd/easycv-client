@@ -3,34 +3,42 @@ import Framework from "@/components/Framework";
 import Index from "@/views/index.jsx";
 import About from "@/views/about.jsx";
 import Settings from "@/views/settings.jsx";
-import {CustomerServiceFilled, FolderOpenFilled, HomeFilled, SettingFilled} from "@ant-design/icons";
 import Explorer from "@/views/explorer.jsx";
+import {IconFolderOpen, IconHome, IconInfoCircle, IconSetting} from "@douyinfe/semi-icons";
+import Studio from "@/views/studio.jsx";
 
 export const childRouter = [
   {
     path: "index",
     element: <Index/>,
-    icon: <HomeFilled/>,
+    icon: <IconHome/>,
     text: "首页",
   },
   {
     path: "explorer",
     element: <Explorer/>,
-    icon: <FolderOpenFilled/>,
+    icon: <IconFolderOpen/>,
     text: "配置管理器",
   },
   {
     path: "settings",
     element: <Settings/>,
-    icon: <SettingFilled/>,
+    icon: <IconSetting/>,
     text: '设置',
   },
   {
     path: "about",
     element: <About/>,
-    icon: <CustomerServiceFilled/>,
+    icon: <IconInfoCircle/>,
     text: '关于',
   },
+  {
+    path: "studio",
+    element: <Studio/>,
+    text: '工作室',
+    hide: true
+  },
+
 ]
 export const router = [
   {

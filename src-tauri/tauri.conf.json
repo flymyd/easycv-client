@@ -29,7 +29,9 @@
         "renameFile": true,
         "exists": true,
         "scope": [
-          "$APPDATA/*"
+          "$APPDATA",
+          "$APPDATA/*",
+          "$APPDATA/**"
         ]
       },
       "path": {

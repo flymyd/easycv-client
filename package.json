@@ -11,7 +11,7 @@
     "tauri-dev": "tauri dev"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.1.4",
+    "@douyinfe/semi-icons": "^2.37.0",
     "@douyinfe/semi-ui": "^2.37.0",
     "@tauri-apps/api": "^1.4.0",
     "react": "^18.2.0",

@@ -9,18 +9,17 @@ const Framework = () => {
   const onClickNav = (e) => {
     navigate(e.itemKey, {replace: true})
   }
-  const menuItems = childRouter.map(v => ({...v, itemKey: '/' + v.path}))
+  const menuItems = childRouter.filter(k => !k.hide).map(v => ({...v, itemKey: '/' + v.path}))
   const contentStyle = {
     background: 'F5F5F5',
     padding: 24,
-    minHeight: 280,
+    height: '100vh',
   }
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={true}>
-        <Nav style={{minHeight: '100vh'}} theme="dark" mode="vertical" defaultIsCollapsed defaultSelectedKeys={[location.pathname]}
-             onClick={onClickNav}
-             items={menuItems}/>
+        <Nav style={{height: '100vh'}} theme="dark" mode="vertical" defaultIsCollapsed
+             defaultSelectedKeys={[location.pathname]} onClick={onClickNav} items={menuItems}/>
       </Sider>
       <Layout>
         <Content style={contentStyle}>
