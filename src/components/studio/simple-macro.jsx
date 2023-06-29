@@ -2,9 +2,17 @@ import "react-contexify/dist/ReactContexify.css";
 import {Card} from "@douyinfe/semi-ui";
 import {Item, Menu, Separator, Submenu, useContextMenu} from "react-contexify";
 import {useEffect, useState} from "react";
-import {getMacroIcon, getMacroLabel, keyCodeDefine, mouseDefine} from "@/components/studio/macro/define.jsx";
+import {
+  DEFAULT_PX,
+  DIRECTION,
+  getMacroIcon,
+  getMacroLabel,
+  keyCodeDefine,
+  mouseDefine
+} from "@/components/studio/macro/define.jsx";
 
 const MENU_ID = 'simple-macro';
+
 const SimpleMacro = () => {
   const [macroList, setMacroList] = useState([])
   const [currentClick, setCurrentClick] = useState(-1)
@@ -65,7 +73,7 @@ const SimpleMacro = () => {
         </Submenu>
         <Item id="delete" onClick={handleItemClick} disabled={currentClick == -1}>删除</Item>
         <Separator/>
-        <Submenu label="新增鼠标事件">
+        <Submenu label="新增鼠标按键事件">
           {
             mouseDefine.map(v => <Submenu label={v.label} disabled={v.disabled} key={v.id}>
               {
@@ -74,13 +82,20 @@ const SimpleMacro = () => {
             </Submenu>)
           }
         </Submenu>
-        <Submenu label="新增键盘事件">
+        <Submenu label="新增键盘按键事件">
           {
             keyCodeDefine.map(v => <Submenu label={v.label} disabled={v.disabled} key={v.id}>
               {
                 Object.keys(v.children).map(k => <Item id={v.id + '-' + k} onClick={handleItemClick}
                                                        key={'keycode-' + k}>{v.children[k]}</Item>)
               }
+            </Submenu>)
+          }
+        </Submenu>
+        <Submenu label="新增鼠标移动事件">
+          {
+            Object.keys(DIRECTION).map(d => <Submenu key={d} label={`向${DIRECTION[d]}移动`}>
+              {DEFAULT_PX.map(v => <Item id={`move-${d}-${v}`} key={d + v} onClick={handleItemClick}>{v}px</Item>)}
             </Submenu>)
           }
         </Submenu>

@@ -1,5 +1,5 @@
 // 根据鼠标事件 id 查找对应的 label
-import {IconArrowDown, IconArrowUp, IconClock, IconCommand} from "@douyinfe/semi-icons";
+import {IconArrowDown, IconArrowUp, IconClock, IconCommand, IconRedo} from "@douyinfe/semi-icons";
 
 function getMouseLabelById(id) {
   for (let mouseItem of mouseDefine) {
@@ -32,6 +32,9 @@ export function getMacroLabel(id) {
     return getKeyboardLabelById(id)
   } else if (id.indexOf('latency') === 0) {
     return '延迟-' + id.split('-')[1] + 'ms'
+  } else if (id.indexOf('move') === 0) {
+    const arr = id.split('-')
+    return `向${DIRECTION[arr[1]]}移动-` + arr[2] + 'px'
   } else return ''
 }
 
@@ -47,8 +50,10 @@ export function getMacroIcon(id) {
     icon = <IconCommand/>
   } else if (id.indexOf('latency') === 0) {
     icon = <IconClock/>
+  } else if (id.indexOf('move') === 0) {
+    icon = <IconRedo />
   }
-  return <div className="mr-2">{icon}</div>
+  return <div className="mr-2 mt-1">{icon}</div>
 }
 
 export const mouseDefine = [
@@ -224,3 +229,6 @@ export const keyCodeDefine = [
     }
   },
 ]
+
+export const DEFAULT_PX = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+export const DIRECTION = {up: '上', left: '左', down: '下', right: '右'}
