@@ -11,7 +11,7 @@ function App() {
     document.body.setAttribute('theme-mode', 'dark');
   }, [])
   return (
-    <div className="app">
+    <div className="app" onContextMenu={(e)=>e.preventDefault()}>
       {init ? element : <div className="w-screen h-screen flex flex-row justify-center items-center">
         <h1 className="text-5xl font-bold">Initializing...</h1>
       </div>}

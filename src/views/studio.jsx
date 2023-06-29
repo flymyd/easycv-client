@@ -20,6 +20,14 @@ const Studio = () => {
   } = Form;
   const [searchParams, setSearchParams] = useSearchParams();
   const formRef = useRef();
+  const [workflowState, setWorkflowState] = useState(null);
+  const handleWorkflowStateChange = (newState) => {
+    setWorkflowState(newState);
+  };
+  useEffect(() => {
+    //TODO
+    console.log(workflowState)
+  }, [workflowState])
   return <div className="flex flex-col w-full">
     <PageTitle title={searchParams.get('id') ? '编辑' : '新建配置文件'} back/>
     {/*<Button onClick={()=>console.log(formRef.current.formApi.getValues())}>test</Button>*/}
@@ -51,7 +59,7 @@ const Studio = () => {
           <Select.Option value='3'>图像识别定位</Select.Option>
           <Select.Option value='4'>高级图像识别定位</Select.Option>
         </Select>
-        <SimpleMacro/>
+        <SimpleMacro onStateChange={handleWorkflowStateChange}/>
       </Section>
       <Space>
         <Button type='primary' theme='solid' style={{width: 120, marginTop: 12, marginRight: 4}}>保存</Button>

@@ -10,10 +10,10 @@ import {
   keyCodeDefine,
   mouseDefine
 } from "@/components/studio/macro/define.jsx";
-
+import _ from 'lodash'
 const MENU_ID = 'simple-macro';
 
-const SimpleMacro = () => {
+const SimpleMacro = ({onStateChange}) => {
   const [macroList, setMacroList] = useState([])
   const [currentClick, setCurrentClick] = useState(-1)
   const {show} = useContextMenu({id: MENU_ID});
@@ -22,6 +22,7 @@ const SimpleMacro = () => {
     setCurrentClick(key)
     show({event, props: {key}})
   }
+  useEffect(() => onStateChange(macroList), [macroList])
   const handleItemClick = ({id, props, triggerEvent, data}) => {
     //删除
     if (id === 'delete') {
@@ -49,7 +50,7 @@ const SimpleMacro = () => {
     <>
       <Card style={{width: 260}} shadows="always"
             bodyStyle={{display: 'flex', flexDirection: 'column', padding: 0}}>
-        <div className="flex flex-col mt-2" style={{minHeight: 300}}
+        <div className="flex flex-col mt-2 pb-7" style={{minHeight: 300}}
              onContextMenu={(e) => handleContextMenu(e, '-1')}>
           {
             macroList.map((k, i) =>
