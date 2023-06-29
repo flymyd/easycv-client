@@ -23,22 +23,24 @@ const Studio = () => {
   return <div className="flex flex-col w-full">
     <PageTitle title={searchParams.get('id') ? '编辑' : '新建配置文件'} back/>
     {/*<Button onClick={()=>console.log(formRef.current.formApi.getValues())}>test</Button>*/}
-    <Form style={{width: 560}} ref={formRef}>
-      <Section text="基本信息">
-        <Input field='name' label='配置名' placeholder="请输入配置文件名" trigger={['blur', 'change']} rules={[
-          {required: true, message: '配置名不能为空'},
-          {max: 20, message: '配置名不能超过20个字符'}
-        ]}/>
-      </Section>
-      <Section text={'采集源分辨率'}>
-        <div style={{display: 'flex', gap: 12}}>
-          <InputNumber field='sourceWidth' initValue={2560} style={{width: 80}} step={10}
-                       label={{text: '宽', required: true}}/>
-          <InputNumber field='sourceHeight' initValue={1440} style={{width: 80}} step={10}
-                       label={{text: '高', required: true}}/>
-        </div>
-      </Section>
-      <Section text="工作流编辑">
+    <Form ref={formRef}>
+      <div className="flex items-start gap-10">
+        <Section text="基本信息">
+          <Input field='name' label='配置名' placeholder="请输入配置文件名" trigger={['blur', 'change']} rules={[
+            {required: true, message: '配置名不能为空'},
+            {max: 20, message: '配置名不能超过20个字符'}
+          ]}/>
+        </Section>
+        <Section text={'采集源分辨率'} style={{marginTop: 0}}>
+          <div style={{display: 'flex', gap: 12}}>
+            <InputNumber field='sourceWidth' initValue={2560} style={{width: 80}} step={10}
+                         label={{text: '宽', required: true}}/>
+            <InputNumber field='sourceHeight' initValue={1440} style={{width: 80}} step={10}
+                         label={{text: '高', required: true}}/>
+          </div>
+        </Section>
+      </div>
+      <Section text="工作流编辑" style={{marginTop: 26}}>
         <Select
           field='workflowType'
           label={{text: '类型', required: true}}
