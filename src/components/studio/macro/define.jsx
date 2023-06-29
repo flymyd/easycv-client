@@ -25,7 +25,7 @@ function getKeyboardLabelById(id) {
   return '';
 }
 
-export function getMarcoLabel(id) {
+export function getMacroLabel(id) {
   if (id.indexOf('mouse') === 0) {
     return getMouseLabelById(id)
   } else if (id.indexOf('key') === 0) {
@@ -35,7 +35,7 @@ export function getMarcoLabel(id) {
   } else return ''
 }
 
-export function getMarcoIcon(id) {
+export function getMacroIcon(id) {
   let icon = <></>;
   if (id.indexOf('mouse') === 0) {
     if (id.includes('press')) {

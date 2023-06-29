@@ -2,11 +2,11 @@ import "react-contexify/dist/ReactContexify.css";
 import {Card} from "@douyinfe/semi-ui";
 import {Item, Menu, Separator, Submenu, useContextMenu} from "react-contexify";
 import {useEffect, useState} from "react";
-import {getMarcoIcon, getMarcoLabel, keyCodeDefine, mouseDefine} from "@/components/studio/marco/define.jsx";
+import {getMacroIcon, getMacroLabel, keyCodeDefine, mouseDefine} from "@/components/studio/macro/define.jsx";
 
-const MENU_ID = 'simple-marco';
-const SimpleMarco = () => {
-  const [marcoList, setMarcoList] = useState([])
+const MENU_ID = 'simple-macro';
+const SimpleMacro = () => {
+  const [macroList, setMacroList] = useState([])
   const [currentClick, setCurrentClick] = useState(-1)
   const {show} = useContextMenu({id: MENU_ID});
   const handleContextMenu = (event, key) => {
@@ -17,7 +17,7 @@ const SimpleMarco = () => {
   const handleItemClick = ({id, props, triggerEvent, data}) => {
     //删除
     if (id === 'delete') {
-      setMarcoList((prevState) => {
+      setMacroList((prevState) => {
         prevState.splice(currentClick, 1);
         return [...prevState];
       })
@@ -25,17 +25,17 @@ const SimpleMarco = () => {
       //新增
       const prefix = id.split('-').slice(0, 2).join('-');
       if (currentClick != -1) {
-        setMarcoList((prevState) => {
+        setMacroList((prevState) => {
           prevState.splice(currentClick + 1, 0, ...[`${prefix}-press`, `${prefix}-release`]);
           return [...prevState];
         })
-      } else setMarcoList([...marcoList, `${prefix}-press`, `${prefix}-release`])
+      } else setMacroList([...macroList, `${prefix}-press`, `${prefix}-release`])
     } else if (currentClick != -1) {
-      setMarcoList((prevState) => {
+      setMacroList((prevState) => {
         prevState.splice(currentClick + 1, 0, id);
         return [...prevState];
       })
-    } else setMarcoList([...marcoList, id])
+    } else setMacroList([...macroList, id])
   }
   return (
     <>
@@ -44,10 +44,10 @@ const SimpleMarco = () => {
         <div className="flex flex-col mt-2" style={{minHeight: 300}}
              onContextMenu={(e) => handleContextMenu(e, '-1')}>
           {
-            marcoList.map((k, i) =>
+            macroList.map((k, i) =>
               <div className="py-1 hover:bg-neutral-800 hover:text-white" key={k + i}
                    onContextMenu={(e) => handleContextMenu(e, i)}>
-                <div className="flex flex-row items-center mx-2">{getMarcoIcon(k)}{getMarcoLabel(k)}</div>
+                <div className="flex flex-row items-center mx-2">{getMacroIcon(k)}{getMacroLabel(k)}</div>
               </div>)
           }
         </div>
@@ -88,4 +88,4 @@ const SimpleMarco = () => {
     </>
   )
 }
-export default SimpleMarco;
+export default SimpleMacro;

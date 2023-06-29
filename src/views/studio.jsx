@@ -2,7 +2,7 @@ import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import {Form, Button, Space, Steps, useFormApi} from '@douyinfe/semi-ui';
 import {PageTitle} from "@/components/page-title.jsx";
-import SimpleMarco from "@/components/studio/simple-marco.jsx";
+import SimpleMacro from "@/components/studio/simple-macro.jsx";
 
 const Studio = () => {
   const {
@@ -51,7 +51,7 @@ const Studio = () => {
           <Select.Option value='3'>图像识别定位</Select.Option>
           <Select.Option value='4'>高级图像识别定位</Select.Option>
         </Select>
-        <SimpleMarco/>
+        <SimpleMacro/>
       </Section>
       <Space>
         <Button type='primary' theme='solid' style={{width: 120, marginTop: 12, marginRight: 4}}>保存</Button>
